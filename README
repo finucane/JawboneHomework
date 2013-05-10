@@ -1,0 +1,16 @@
+this was a programming homework assignment as part of a job i was trying to get. it was to display the results of a twitter api query into a table view. they wanted alternating cell colors, pull down to refresh, and "infinite rows" meaning when the user scrolls to the end of the table view, more entries are fetched and displayed. Also cell heights were to be sized according to the size of the cell contents (how long the tweet was). Finally, swipe to delete was implemented.
+
+
+most of the effort on this was to do a wrapper around NSURLConnection that is decent enough to do error handling and reporting but not too huge and bloated to make sense for
+a job interview homework assignment. That's JBConnection. This thing also cleanly handles being deallocted in the middle of doing network stuff, though that's not been tested. this would be used if the user was able to remove the table view from the screen during a download (for instance if this demo had a navigation controller in it).
+
+to see some of the error handling in action, turn off your phone's (or the simulator)'s network connection and start the app.
+
+the assignment called for loading just one page at a time, basically, so the networking is not parallelized.
+
+See ARCHITECTURE-DIAGRAM.png
+
+i didn't do gradients because it looked ugly, and pull down refresh is only supported on iOS 6.x and above, because i used the built in UIRefreshControl rather than a 3rd party library. Same as the JSON stuff, i used the built in framework support for that.
+
+tested on the simulator ios5&6 and on an iphone5/ios6.
+
